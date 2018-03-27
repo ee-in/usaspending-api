@@ -93,12 +93,3 @@ SET business_categories = compile_fpds_business_categories(
 FROM transaction_fpds AS tf
 WHERE is_fpds = TRUE AND
       legal_entity.transaction_unique_id = tf.detached_award_proc_unique;
-
--- FABS
-UPDATE legal_entity
-SET business_categories = compile_fabs_business_categories(
-    tf.business_types
-)
-FROM transaction_fabs AS tf
-WHERE is_fpds = FALSE AND
-      legal_entity.transaction_unique_id = tf.afa_generated_unique;;
