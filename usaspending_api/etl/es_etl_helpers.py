@@ -302,8 +302,9 @@ def swap_aliases(client, index):
 
 
 def test_mapping(client, index, config):
+    transaction_mapping = json.loads(config['mapping'])['mappings']
     index_mapping = client.indices.get(index)[index]['mappings']
-    return index_mapping == config['mapping']
+    return index_mapping == transaction_mapping
 
 
 def post_to_elasticsearch(client, job, config, chunksize=250000):
